@@ -9,7 +9,7 @@ import { Hero } from '../../interfaces/hero.interface'
     styleUrl: './search-page.component.css',
 })
 export class SearchPageComponent {
-    public searchInput = new FormControl()
+    public searchInput = new FormControl('')
     public heroes: Hero[] = []
 
     constructor(private _heroesService: HeroesService) {}
