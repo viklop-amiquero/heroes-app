@@ -1,4 +1,6 @@
 import { Component } from '@angular/core'
+import { AuthService } from '../../../auth/services/auth.service'
+import { User } from '../../../auth/interfaces/user.interface'
 
 @Component({
     selector: 'app-layout-page',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core'
     styleUrl: './layout-page.component.css',
 })
 export class LayoutPageComponent {
+    public constructor(private _authService: AuthService) {}
     public sidebarItems = [
         {
             label: 'listado',
@@ -23,4 +26,12 @@ export class LayoutPageComponent {
             url: './search',
         },
     ]
+
+    get user(): User | undefined {
+        return this._authService.currentUser
+    }
+
+    onLogOut(): void {
+        this._authService.logOut()
+    }
 }
